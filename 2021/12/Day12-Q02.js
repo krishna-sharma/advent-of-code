@@ -21,11 +21,7 @@ const isValidPath = (path) => {
   let isValid = true;
   const caveCounts = {};
   let smallCaveVisitedTwice = false;
-  const cavesInPath = path.split(",");
-  if (cavesInPath.length > 100) {
-    return false;
-  }
-  for (caveName of cavesInPath) {
+  for (caveName of path.split(",")) {
     caveCounts[caveName] = caveCounts[caveName] ? caveCounts[caveName] + 1 : 1;
 
     if (caves[caveName].isSmall) {
@@ -54,30 +50,21 @@ const isValidPath = (path) => {
   return isValid && path.startsWith("start");
 };
 
-const uniquePaths = [];
-const partialPaths = [];
+const uniquePaths = {};
 const seekNewPath = (currentPath) => {
   if (currentPath.endsWith(",end")) {
-    if (!uniquePaths.includes(currentPath)) {
-      uniquePaths.push(currentPath);
-    }
+    uniquePaths[currentPath] = true;
   } else {
     const lastCave = currentPath.split(",").pop();
     for (nextCave of connections[lastCave]) {
       const nextPath = currentPath + "," + nextCave;
-      if (!partialPaths.includes(nextPath)) {
-        partialPaths.push(nextPath);
-        if (isValidPath(nextPath)) {
-          seekNewPath(nextPath);
-        }
+      if (isValidPath(nextPath)) {
+        seekNewPath(nextPath);
       }
     }
   }
 };
 
 console.log(connections);
-setInterval(() => {
-  console.log(partialPaths.length, uniquePaths.length);
-}, 1000);
 seekNewPath("start");
-console.log(uniquePaths.length);
+console.log(Object.keys(uniquePaths).length);

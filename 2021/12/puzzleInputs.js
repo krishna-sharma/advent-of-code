@@ -70,4 +70,4 @@ const puzzleInput4 = [
   "b-end",
 ];
 
-module.exports = puzzleInput4;
+module.exports = puzzleInput1;
