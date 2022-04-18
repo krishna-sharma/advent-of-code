@@ -1,0 +1,2 @@
+const puzzleInput = require("./puzzleInputs");
+
