@@ -126,4 +126,4 @@ const puzzleInput2 = {
   ],
 };
 
-module.exports = puzzleInput1;
+module.exports = puzzleInput2;
