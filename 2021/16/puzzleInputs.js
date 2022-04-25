@@ -5,5 +5,6 @@ const puzzleInput2 = "8A004A801A8002F478";
 const puzzleInput3 = "620080001611562C8802118E34";
 const puzzleInput4 = "C0015000016115A2E0802F182340";
 const puzzleInput5 = "A0016C880162017C3686B18A3D4780";
+const puzzleInput6 = "9C0141080250320F1802104A08";
 
 module.exports = puzzleInput1;
